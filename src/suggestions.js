@@ -43,6 +43,10 @@ var Suggestions = function(el, data, options) {
     this.handlePaste(e);
   }.bind(this));
 
+  this.el.addEventListener('compositionend', function(e) {
+    this.handleInputChange(this.el.value);
+  }.bind(this), false);
+
   // use user-provided render function if given, otherwise just use the default
   this.render = (this.options.render) ? this.options.render.bind(this) : this.render.bind(this)
 
